@@ -1,0 +1,16 @@
+generator client {
+    provider      = "prisma-client-js"
+    output        = "../node_modules/.prisma/snake-client"
+    binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = env("SNAKE_URL")
+}
+
+model Snake {
+    id    String @id @default(cuid())
+    name  String
+    color String
+}
